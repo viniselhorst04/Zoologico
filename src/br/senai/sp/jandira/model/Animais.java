@@ -1,31 +1,56 @@
 package br.senai.sp.jandira.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Animais {
 
-    String nome,sexo;
+    public String nome,sexo;
     int idade, IDunica,tipoAnimal;
-
-
     Scanner scanner = new Scanner(System.in);
+    List<Animais> animaisList = new ArrayList<>();
 
     public void cadastrarAnimal(){
 
 
-        System.out.print("\n  Nome:");
+        System.out.print("\n Nome: ");
         nome = scanner.nextLine();
-        System.out.print(" Sexo:");
+        System.out.print(" Sexo: ");
         sexo = scanner.nextLine();
-        System.out.print(" Idade:");
+        System.out.print(" Idade: ");
         idade = scanner.nextInt();
-        System.out.print(" ID do Animal");
+        System.out.print(" ID do Animal: ");
         IDunica = scanner.nextInt();
-        System.out.println(" Tipo do animal : [ 1- Mamifero  2- Aves  3-Repteis");
-        tipoAnimal = scanner.nextInt();
         scanner.nextLine();
 
 
+    }
+
+    public void addAnimal(Animais animais){
+        animaisList.add(animais);
+    }
+
+    public void listarAnimal (){
+        for (Animais animais : animaisList ) {
+
+            System.out.println(animais.nome);
+            System.out.println(animais.idade);
+            System.out.println(animais.sexo);
+            System.out.println(animais.IDunica + "\n");
+
+        }
+    }
+
+    public boolean procurarAnimal(String animalPesquisado){
+        for (Animais animais : animaisList) {
+            if (animais.nome.equalsIgnoreCase(animalPesquisado)){
+                return true;
+
+            }
+        }
+
+        return false;
     }
 
     public int getTipoAnimal() {
